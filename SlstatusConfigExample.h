@@ -60,14 +60,16 @@ static const char unknown_str[] = "n/a";
  *                                                     NULL on OpenBSD/FreeBSD
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
- */
+  */
 static const struct arg args[] = {
-	/* function format          argument */
-	{ run_command, "XOXOXOXO |󰕾 %s", "sh -c 'amixer -c 0 get Master | grep -q off && echo XX || amixer -c 0 get Master | grep -oP \"\\d+%\" || echo \"N/A\"'" },
-	{ disk_free, "| Disk:%s",	"/" },
-	{ battery_perc, "| BATTERY:%s%%",	"BAT0" },
-	{ wifi_essid, "| WiFi:%s",	"wlp1s0" },
-	{ netspeed_rx, "| %sB/s",	"wlp1s0" },
-	{ datetime, "| %s \ueb05 ",           "%F %T" },
+       	/* function format          argument */
+       	{ run_command, "|     |󰕾 %s", "sh -c 'amixer -c 0 get Master | grep -q off && echo XX || amixer -c 0 get Master | grep -oP \"\\d+%\" || echo \"N/A\"'" },
+       	{ wifi_essid, "|  :%s",        "wlp3s0" },
+       	{ netspeed_rx, "| 󰓅 %sB/s",     "wlp3s0" },
+       	{ battery_perc, "| 󰂄 #1 %s%%",  "BAT0" },
+       	{ battery_perc, "| 󰂄 #2 %s%%",  "BAT1" },
+       	{ disk_free, "| Disk:%s|",      "/" },
+       	{ datetime, " %s ",    "%F" },
+       	{ datetime, " %s",     "%T" },
 };
 
